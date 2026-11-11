@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuda MEWAH CONSTRUCTION</title>
+    <style>
+        :root {
+            --primary: #d97706;
+            --primary-hover: #b45309;
+            --dark: #0f172a;
+            --card-bg: #1e293b;
+            --light-bg: #f8fafc;
+            --text-dark: #334155;
+            --text-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: var(--text-light);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Specializations */
+        .spec-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .spec-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .project-badge {
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Image Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .img-card {
+            position: relative;
+            background: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .img-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .img-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.75);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark);
+            color: var(--text-light);
+            padding: 4rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 4rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: 2px solid var(--primary);
+            border-color: transparent;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Kuda MEWAH CONSTRUCTION</div>
+        <div class="nav-links">
+            <a href="#specializations">Services</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Welcome Section -->
+    <header class="hero">
+        <h1>Welcome to Kuda MEWAH CONSTRUCTION</h1>
+        <p>Delivering excellence in heavy engineering, structural foundations, and specialized modern construction solutions.</p>
+    </header>
+
+    <!-- Specializations & Projects -->
+    <main class="container" id="specializations">
+        <h2 class="section-title">Our Specializations</h2>
+
+        <!-- 1. Building Engineering -->
+        <article class="spec-card">
+            <div class="spec-header">
+                <h3 class="spec-title">1. Building Engineering</h3>
+                <span class="project-badge">Project: USM Mosque ($100k USD)</span>
+            </div>
+            <div class="gallery">
+                <div class="img-card">
+                    <img src="B1.jpg" alt="Building Engineering B1" onerror="this.src='https://placehold.co/600x400?text=Image+B1'">
+                    <span class="img-label">B1</span>
+                </div>
+                <div class="img-card">
+                    <img src="B2.jpg" alt="Building Engineering B2" onerror="this.src='https://placehold.co/600x400?text=Image+B2'">
+                    <span class="img-label">B2</span>
+                </div>
+                <div class="img-card">
+                    <img src="B3.jpg" alt="Building Engineering B3" onerror="this.src='https://placehold.co/600x400?text=Image+B3'">
+                    <span class="img-label">B3</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. Foundation and Earthwork -->
+        <article class="spec-card">
+            <div class="spec-header">
+                <h3 class="spec-title">2. Foundation & Earthwork</h3>
+                <span class="project-badge">Project: Bridge Foundation SD Guthrie ($20k USD)</span>
+            </div>
+            <div class="gallery">
+                <div class="img-card">
+                    <img src="F1.jpg" alt="Foundation F1" onerror="this.src='https://placehold.co/600x400?text=Image+F1'">
+                    <span class="img-label">F1</span>
+                </div>
+                <div class="img-card">
+                    <img src="F2.jpg" alt="Foundation F2" onerror="this.src='https://placehold.co/600x400?text=Image+F2'">
+                    <span class="img-label">F2</span>
+                </div>
+                <div class="img-card">
+                    <img src="F3.jpg" alt="Foundation F3" onerror="this.src='https://placehold.co/600x400?text=Image+F3'">
+                    <span class="img-label">F3</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- 3. Hydro Engineering -->
+        <article class="spec-card">
+            <div class="spec-header">
+                <h3 class="spec-title">3. Hydro Engineering</h3>
+                <span class="project-badge">Project: 60MT Bridge Building ($40k USD)</span>
+            </div>
+            <div class="gallery">
+                <div class="img-card">
+                    <img src="H1.jpg" alt="Hydro Engineering H1" onerror="this.src='https://placehold.co/600x400?text=Image+H1'">
+                    <span class="img-label">H1</span>
+                </div>
+                <div class="img-card">
+                    <img src="H2.jpg" alt="Hydro Engineering H2" onerror="this.src='https://placehold.co/600x400?text=Image+H2'">
+                    <span class="img-label">H2</span>
+                </div>
+                <div class="img-card">
+                    <img src="H3.jpg" alt="Hydro Engineering H3" onerror="this.src='https://placehold.co/600x400?text=Image+H3'">
+                    <span class="img-label">H3</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. Wastewater Management -->
+        <article class="spec-card">
+            <div class="spec-header">
+                <h3 class="spec-title">4. Wastewater Management Engineering</h3>
+            </div>
+            <p style="color: #64748b;">Providing sustainable wastewater processing infrastructure and eco-friendly treatment plant installations.</p>
+        </article>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title" style="color: white;">Get in Touch</h2>
+            <form class="contact-form" id="whatsappForm">
+                <div class="form-group">
+                    <label for="name">Visitor Name *</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name *</label>
+                    <input type="text" id="company" required placeholder="Enter your company name">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role / Position *</label>
+                    <input type="text" id="role" required placeholder="e.g. Project Manager, Director">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" rows="4" required placeholder="Describe your inquiry or requirement"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Direct WhatsApp Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Kuda MEWAH CONSTRUCTION. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Direct WhatsApp Redirect Script -->
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const role = document.getElementById('role').value;
+            const message = document.getElementById('message').value;
+
+            // Target Phone Number: +60164461017
+            const phoneNumber = "60164461017";
+
+            // Format WhatsApp Message Text
+            const text = `Hello Kuda MEWAH CONSTRUCTION,\n\nI am contacting you from your website.\n\n` +
+                         `*Name:* ${name}\n` +
+                         `*Company:* ${company}\n` +
+                         `*Role:* ${role}\n` +
+                         `*Message:* ${message}`;
+
+            // Build WhatsApp Web / App API Link
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+            // Open WhatsApp directly in new tab/app
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+  </html>
+  
